@@ -1,0 +1,207 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
+
+/* Search Page RAZOR VIEW Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0c3a3a;
+  background-image: url('path/to/image.jpg');
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 3rem;
+}
+
+.navbar{
+  padding: 0;  
+}
+
+
+
+.navbar-brand{
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+  font-size: 2em;
+  
+  
+}
+
+.container-fluid{
+  
+  padding: 1em;
+}
+
+
+
+.search-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-style: italic;
+  font-size: 2em;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sub-title{
+  display: flex;
+  justify-content: center;
+  color: #a6cabd;
+}
+
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.results {
+  font-size: 1.5rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.form-group {
+  
+  display: block;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+input{
+  border-radius: 5px;
+  width: 60%;
+  border-color: #0d4141;
+  
+}
+
+input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+button {
+  display: inline-block;
+  background-color: #cf911e;
+  color: black;
+  font-size: 1rem;
+  padding: 1px 20px;
+  font-size: 20px;
+  border-radius: 20px;
+  border-style: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #cf911e;
+  border-style: none;
+  color: rgb(255, 255, 255);
+  transition: .5s ease-in-out;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 1px solid wheat;
+  margin-bottom: 2em;
+}
+
+th {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 20px;
+  border-bottom: 2px solid #ccc;
+  color: white;
+}
+
+td {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  color: white;
+}
+
+.footer{
+  color: rgba(255, 255, 0, 0.589);
+  margin-left: 1em;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .results{
+    color: white;
+  }
+
+  input[type="text"] {
+    font-size: 1.1rem;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 8px 16px;
+  }
+
+  th, td {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
