@@ -33,25 +33,26 @@
         <!-- If search results are available, show them in a table -->
         @if (Model.Results != null)
         {
-            <h2 class="results">Results</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>City</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Loop through each result and display their name and city in a table row -->
-                    @foreach (var result in Model.Results)
-                    {
-                        <tr>
-                            <td>@result.Name</td>
-                            <td>@result.City</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            <h2 class="results">Results:</h2>
+         <table class="table">
+  <thead>
+    <tr>
+      <th class="table-header">Name</th>
+      <th class="table-header">City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Loop through each result and display their name and city in a table row -->
+    @foreach (var result in Model.Results)
+    {
+        <tr class="table-row">
+            <td class="table-data">@result.Name</td>
+            <td class="table-data">@result.City</td>
+        </tr>
+    }
+  </tbody>
+</table>
+
         }
     </div>
 </body>

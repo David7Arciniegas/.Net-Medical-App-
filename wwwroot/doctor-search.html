@@ -1,63 +1,117 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Doctor Search</title>
-	<link rel="stylesheet" href="./css/js.css">
-</head>
-<body>
+  <head>
+    <title>Doctor Search</title>
+    <link rel="stylesheet" href="./css/js.css" />
+  </head>
+  <body>
+    <div class="container-card">
+      <navbar>
+        <div class="nav-container">
+          <img class="logo" src="clinical-logo.png" alt="" width="50px" />
+        </div>
+      </navbar>
+      <div class="header-title-container">
+        <h1 style="font-size: 40px">Welcome to our portal</h1>
+      </div>
+      <div class="header-title-container">
+        <p>
+          Here you can search for our professionals & the Clinics of our
+          services.
+        </p>
+      </div>
 
-	<navbar>
-		<div class="nav-container">
-			<img class="logo" src="./clinical-logo.png" alt="">
-			
-		</div>
-	</navbar>
-	<form id="search-form">
-		
-		<label for="doctor-name" class="form-label">Doctor or clinic name:</label>
-		<input type="text" id="doctor-name" name="doctorName" class="form-input">
+      <div class="card-add-container">
+        <p>Potential Growth</p>
+        <h3>1200+</h3>
+        <img
+          class="logo"
+          src="pngwing.com (1).png"
+          alt=""
+          width="50px"
+          style="height: 40px"
+        />
+      </div>
 
-		<label for="city" class="form-label">City:</label>
-		<input type="text" id="city" name="city" class="form-input">
+      <div class="container">
+        <form id="search-form">
+          <label for="doctor-name" class="form-label"
+            >Doctor or Clinic name:</label
+          >
+          <input
+            type="text"
+            id="doctor-name"
+            name="doctorName"
+            class="form-input"
+          />
 
-		<button type="submit" class="form-button">Search</button>
-	</form>
+          <label for="city" class="form-label">City:</label>
+          <input type="text" id="city" name="city" class="form-input" />
 
-	<div id="results" class="results-container"></div>
+          <button type="submit" class="form-button">Search</button>
+        </form>
+        <img class="image" src="pngwing.com.png" alt="" />
+      </div>
 
-	
-	<script>
-		const form = document.querySelector('#search-form');
-		const resultsContainer = document.querySelector('#results');
+      <div id="results" class="results-container"></div>
+    </div>
 
-		form.addEventListener('submit', (event) => {
-			event.preventDefault(); // Prevent the form from submitting normally
+    <script>
+      // Get the search form and results container elements
+      const form = document.querySelector("#search-form");
+      const resultsContainer = document.querySelector("#results");
 
-			const doctorName = document.querySelector('#doctor-name').value;
-			const city = document.querySelector('#city').value;
+      // Add an event listener to the search form for when it is submitted
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent the form from submitting normally
 
-			// Send a GET request to the API endpoint
-			fetch(`/api/DoctorSearchApi?doctorOrClinicName=${doctorName}&city=${city}`)
-				.then(response => response.json())
-				.then(results => {
-					// Display the results on the page
-					resultsContainer.innerHTML = '';
-					if (results.length > 0) {
-						results.forEach(result => {
-							const resultElement = document.createElement('div');
-							resultElement.textContent = `${result.name} - ${result.city}`;
-							resultElement.classList.add('result-item');
-							resultsContainer.appendChild(resultElement);
-						});
-					} else {
-						resultsContainer.textContent = 'No results found.';
-					}
-				})
-					.catch(error => {
-					console.error(error);
-					resultsContainer.textContent = 'An error occurred while fetching results.';
-				});
-			});
-	</script>
-</body>
+        // Get the values of the search inputs
+        const doctorName = document.querySelector("#doctor-name").value;
+        const city = document.querySelector("#city").value;
+
+        if (doctorName || city) {
+          // Check if either search input has a value
+          // Send a GET request to the API endpoint with the search values
+          fetch(
+            `/api/DoctorSearchApi?doctorOrClinicName=${doctorName}&city=${city}`
+          )
+            .then((response) => response.json())
+            .then((results) => {
+              // Display the search results on the page
+              resultsContainer.innerHTML = "";
+              if (results.length > 0) {
+                results.forEach((result) => {
+                  const resultElement = document.createElement("div");
+                  resultElement.textContent = `${result.name} - ${result.city}`;
+                  resultElement.classList.add("result-item");
+                  resultsContainer.appendChild(resultElement);
+                });
+              } else {
+                resultsContainer.textContent = "No results found.";
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+              resultsContainer.textContent =
+                "An error occurred while fetching results.";
+            });
+        } else {
+          // If neither search input has a value, clear the search results
+          resultsContainer.innerHTML = "";
+        }
+      });
+
+      // Add event listeners to the input fields to trigger a search on every change
+      const doctorNameInput = document.querySelector("#doctor-name");
+      const cityInput = document.querySelector("#city");
+
+      doctorNameInput.addEventListener("input", () => {
+        form.dispatchEvent(new Event("submit"));
+      });
+
+      cityInput.addEventListener("input", () => {
+        form.dispatchEvent(new Event("submit"));
+      });
+    </script>
+  </body>
 </html>
